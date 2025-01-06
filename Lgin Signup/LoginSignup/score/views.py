@@ -5,6 +5,8 @@ from .models import Customer
 from django.contrib.auth.hashers import make_password
 from .forms import CustomerForm, LoginForm
 from django.core.paginator import Paginator
+from .utils import *
+from .models import uuid
 def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')

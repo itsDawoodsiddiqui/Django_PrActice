@@ -4,6 +4,11 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE),
+    email_token = models.CharField(max_length=200),
+    is_verified = models.BooleanField(default=False)
+
 class Customer(models.Model):
     unique_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)  # Auto-generated unique ID
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
