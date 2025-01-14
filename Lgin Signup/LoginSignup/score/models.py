@@ -1,20 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.hashers import make_password
+
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE),
-    email_token = models.CharField(max_length=200),
-    is_verified = models.BooleanField(default=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Removed trailing comma
+    email_token = models.CharField(max_length=200)
+    is_verified = models.BooleanField(default=False)    
+
+    def __str__(self):
+        return f"Profile of {self.user.username}"
+
 
 class Customer(models.Model):
     unique_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)  # Auto-generated unique ID
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     username = models.CharField(max_length=150)
     email = models.EmailField(max_length=150)
-    password = models.CharField(max_length=128)  # Updated max_length to 128 to handle hashed passwords
-    
+    password = models.CharField(max_length=128) 
+
+
     def __str__(self) -> str:
-        return self.username + ' ' + self.email
+        return f"{self.username} - {self.email}"

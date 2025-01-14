@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'mainapp/styles.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'about' %}">About us</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+    </div>
+    
+    <h1>About us</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus architecto nostrum odit ea autem laboriosam officiis officia molestias. Facilis aspernatur error
+        consequatur nobis, illum consequuntur excepturi repellendus minima quia dolores doloribus necessitatibus modi repellat corrupti enim dolor vitae, laboriosam
+        officiis facere ipsam non. Natus incidunt adipisci quae optio delectus cupiditate dolores. Consequatur provident quia tenetur rerum quod magnam commodi illo. 
+        Molestias accusantium nemo placeat consequatur suscipit quos voluptatibus nesciunt voluptatum quidem eius debitis, numquam nulla omnis voluptatem quia aliquam? 
+        Molestiae ipsa sequi nemo odio distinctio, temporibus facere delectus, beatae perspiciatis soluta quaerat officia totam illum ullam, dolores ea recusandae. 
+        Laudantium?</p>
+</body>
+</html>

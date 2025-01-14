@@ -7,6 +7,8 @@ from .forms import CustomerForm, LoginForm
 from django.core.paginator import Paginator
 from .utils import *
 from .models import uuid
+from django.http import HttpResponse
+
 def index(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,7 +29,7 @@ def index(request):
             customer = Customer(username=username, email=email, password=hashed_password)
             customer.save()
             messages.success(request, "Signup successful!")
-            return redirect('/')  # Redirect to login  page
+            return redirect('home1/')  # Redirect to login  page
 
         return render(request, 'score/index.html')
 
@@ -62,12 +64,13 @@ def login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, "Welcome to the Todo App")
-                return redirect('/score/')
+                return redirect('home1/')
             else:
                 messages.error(request, "Invalid email or password.")
                 # Debugging: print the failed login attempt
                 print(f"Failed login attempt for email: {email}")
     return render(request, 'score/login.html', {'form': form})
+ 
 
 
 # Add Customer View
@@ -88,3 +91,19 @@ def add_customer(request):
     else:
         messages.error(request, "You must be logged in to add a customer.")
         return redirect('login')
+
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
+def home1(request):
+    return HttpResponse("HelloWorld")
+
+
+def about(request):
+    return HttpResponse("About Us")
+
+def contact(request):
+    return HttpResponse("Contact us")
