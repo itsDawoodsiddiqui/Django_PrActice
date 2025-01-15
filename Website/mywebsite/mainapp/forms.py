@@ -16,6 +16,7 @@ class SignupForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
     email = forms.EmailField()
+    password = forms.CharField()
 
 
 from django import forms
